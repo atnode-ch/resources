@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ui-sdk Page</title>
+
+    <script type="module" src="https://ui-sdk.dev/web.js"></script>
+    <link rel="stylesheet" href="https://ui-sdk.dev/web.css" />
+
+    <style>
+      /* Declare ui-sdk's layer first so these styles win over its defaults. */
+      @layer ui-sdk;
+
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ui-sdk Page</h1>
+    <p>Ready to build. A quick check that components load:</p>
+
+    <ui-toggle>
+      <button type="button">Bookmark</button>
+    </ui-toggle>
+  </body>
+</html>
