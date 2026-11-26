@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ui-sdk Page</title>
+    <title>Personal Data</title>
 
     <script type="module" src="https://ui-sdk.dev/web.js"></script>
     <link rel="stylesheet" href="https://ui-sdk.dev/web.css" />
@@ -15,22 +15,79 @@
       :root {
         color-scheme: light dark;
         font-family: system-ui, sans-serif;
+        --box-border: #d4d4d4;
+        --box-bg: #fafafa;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --box-border: #404040;
+          --box-bg: #171717;
+        }
       }
 
       body {
         margin: 0;
         padding: 2rem 1rem;
-        max-width: 40rem;
+        max-width: 32rem;
         margin-inline: auto;
+      }
+
+      /* The "Personal Data" box */
+      fieldset {
+        margin: 0;
+        padding: 1.25rem;
+        border: 1px solid var(--box-border);
+        border-radius: 0.75rem;
+        background: var(--box-bg);
+      }
+
+      legend {
+        padding-inline: 0.5rem;
+        font-weight: 600;
+      }
+
+      ui-field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      ui-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+      }
+
+      ui-input input {
+        width: 100%;
+        box-sizing: border-box;
       }
     </style>
   </head>
   <body>
-    <h1>ui-sdk Page</h1>
-    <p>Ready to build. A quick check that components load:</p>
+    <form>
+      <ui-field-set>
+        <fieldset>
+          <legend>Personal Data</legend>
+          <ui-field-group>
+            <ui-field name="firstName">
+              <ui-field-label>First name</ui-field-label>
+              <ui-input><input autocomplete="given-name" /></ui-input>
+            </ui-field>
 
-    <ui-toggle>
-      <button type="button">Bookmark</button>
-    </ui-toggle>
+            <ui-field name="name">
+              <ui-field-label>Name</ui-field-label>
+              <ui-input><input autocomplete="family-name" /></ui-input>
+            </ui-field>
+
+            <ui-field name="address">
+              <ui-field-label>Address</ui-field-label>
+              <ui-input><input autocomplete="street-address" /></ui-input>
+            </ui-field>
+          </ui-field-group>
+        </fieldset>
+      </ui-field-set>
+    </form>
   </body>
 </html>
