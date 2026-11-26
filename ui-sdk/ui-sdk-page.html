@@ -63,6 +63,28 @@
         width: 100%;
         box-sizing: border-box;
       }
+
+      /* Mark mandatory fields */
+      ui-field-label[data-required]::after {
+        content: " *";
+        color: #dc2626;
+      }
+
+      ui-field-error {
+        color: #dc2626;
+        font-size: 0.875rem;
+      }
+
+      /* ZIP Code (20%) to the left of Location */
+      .row {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        gap: 0.75rem;
+      }
+
+      .row ui-field {
+        min-width: 0;
+      }
     </style>
   </head>
   <body>
@@ -73,18 +95,35 @@
           <ui-field-group>
             <ui-field name="firstName">
               <ui-field-label>First name</ui-field-label>
-              <ui-input><input autocomplete="given-name" /></ui-input>
+              <ui-input><input autocomplete="given-name" required /></ui-input>
+              <ui-field-error match="valueMissing">Enter your first name.</ui-field-error>
             </ui-field>
 
             <ui-field name="name">
               <ui-field-label>Name</ui-field-label>
-              <ui-input><input autocomplete="family-name" /></ui-input>
+              <ui-input><input autocomplete="family-name" required /></ui-input>
+              <ui-field-error match="valueMissing">Enter your name.</ui-field-error>
             </ui-field>
 
-            <ui-field name="address">
-              <ui-field-label>Address</ui-field-label>
-              <ui-input><input autocomplete="street-address" /></ui-input>
+            <ui-field name="street">
+              <ui-field-label>Street</ui-field-label>
+              <ui-input><input autocomplete="address-line1" required /></ui-input>
+              <ui-field-error match="valueMissing">Enter your street.</ui-field-error>
             </ui-field>
+
+            <div class="row">
+              <ui-field name="zip">
+                <ui-field-label>ZIP Code</ui-field-label>
+                <ui-input><input autocomplete="postal-code" required /></ui-input>
+                <ui-field-error match="valueMissing">Enter ZIP.</ui-field-error>
+              </ui-field>
+
+              <ui-field name="location">
+                <ui-field-label>Location</ui-field-label>
+                <ui-input><input autocomplete="address-level2" required /></ui-input>
+                <ui-field-error match="valueMissing">Enter your location.</ui-field-error>
+              </ui-field>
+            </div>
           </ui-field-group>
         </fieldset>
       </ui-field-set>
